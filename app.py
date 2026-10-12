@@ -1604,7 +1604,7 @@ if st.button("Recognise location"):
 
             with st.spinner("Recognising location..."):
                 location_result = client.speech_to_text.transcribe(
-                                    file=("recording.wav", audio.getvalue(), "audio/wav"),
+                                    file=("location_recording.wav", audio.getvalue(), "audio/wav"),
                                     model="saaras:v4",
                                     mode="transcribe"
                                 )
