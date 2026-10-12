@@ -1595,7 +1595,7 @@ location_audio = st.audio_input(
 
 if st.button("Recognise location"):
     if location_audio is None:
-    st.warning("Please record your location first.")
+      st.warning("Please record your location first.")
 else:
     try:
         client = SarvamAI(
