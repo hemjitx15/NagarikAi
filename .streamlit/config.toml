@@ -1,0 +1,15 @@
+[theme]
+base = "light"
+primaryColor = "#153B32"
+backgroundColor = "#F5F7F4"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#0F2A24"
+borderColor = "#E3E8E1"
+showWidgetBorder = true
+
+[server]
+headless = true
+fileWatcherType = "auto"
+
+[browser]
+gatherUsageStats = false
