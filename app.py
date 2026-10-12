@@ -1610,8 +1610,7 @@ if st.button("Recognise location"):
                                 )
                 
 
-            st.session_state["sarvam_test_location"] = (
-                location_result.transcript
+            st.session_state["sarvam_test_location"] = transcript.transcript
             )
             st.success("Location recognised. Please verify it.")
 
