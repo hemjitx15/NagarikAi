@@ -1595,28 +1595,30 @@ location_audio = st.audio_input(
 
 if st.button("Recognise location"):
     if location_audio is None:
-        st.warning("Please record your location first.")
-    else:
-        try:
-            client = SarvamAI(
-                api_subscription_key=os.getenv("SARVAM_API_KEY")
+    st.warning("Please record your location first.")
+else:
+    try:
+        client = SarvamAI(
+            api_subscription_key=os.getenv("SARVAM_API_KEY")
+        )
+
+        with st.spinner("Recognising location..."):
+            location_result = client.speech_to_text.transcribe(
+                file=(
+                    "location_recording.wav",
+                    location_audio.getvalue(),
+                    "audio/wav"
+                ),
+                model="saaras:v4",
+                mode="transcribe"
             )
 
-            with st.spinner("Recognising location..."):
-                location_result = client.speech_to_text.transcribe(
-                                    file=("location_recording.wav", audio.getvalue(), "audio/wav"),
-                                    model="saaras:v4",
-                                    mode="transcribe"
-                                )
-                
+        st.session_state["sarvam_test_location"] = location_result.transcript
+        st.success("Location recognised. Please verify it.")
 
-            st.session_state["sarvam_test_location"] = transcript.transcript
-            )
-            st.success("Location recognised. Please verify it.")
-
-        except Exception as e:
-            st.error("Location recognition failed.")
-            st.caption(str(e))
+    except Exception as e:
+        st.error(f"Location transcription failed: {e}")
+        
 
 location = st.text_input(
     "Confirm or edit your location",
