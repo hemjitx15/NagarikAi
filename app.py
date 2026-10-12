@@ -1570,7 +1570,7 @@ if st.button("Transcribe voice"):
                                 model="saaras:v4",
                                 mode="transcribe"
                                 )
-                )
+                
 
             st.session_state["sarvam_test_complaint"] = (
                 transcript.transcript
@@ -1608,7 +1608,7 @@ if st.button("Recognise location"):
                                     model="saaras:v4",
                                     mode="transcribe"
                                 )
-                )
+                
 
             st.session_state["sarvam_test_location"] = (
                 location_result.transcript
