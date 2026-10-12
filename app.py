@@ -1566,9 +1566,10 @@ if st.button("Transcribe voice"):
 
             with st.spinner("Recognising your speech..."):
                 transcript = client.speech_to_text.transcribe(
-                    file=audio,
-                    model="saaras:v4",
-                    mode="transcribe",
+                                file=("recording.wav", audio.getvalue(), "audio/wav"),
+                                model="saaras:v4",
+                                mode="transcribe"
+                                )
                 )
 
             st.session_state["sarvam_test_complaint"] = (
@@ -1603,9 +1604,10 @@ if st.button("Recognise location"):
 
             with st.spinner("Recognising location..."):
                 location_result = client.speech_to_text.transcribe(
-                    file=location_audio,
-                    model="saaras:v4",
-                    mode="transcribe",
+                                    file=("recording.wav", audio.getvalue(), "audio/wav"),
+                                    model="saaras:v4",
+                                    mode="transcribe"
+                                )
                 )
 
             st.session_state["sarvam_test_location"] = (
